@@ -22,8 +22,8 @@
 #define VERSION_FILEVERSION_NUM      4,0,13,0
 #define VERSION_FILEVERSION_SHORT    L"4.0.13"
 #define VERSION_FILEVERSION_LONG     L"metapath 4.0.13"
-#define VERSION_LEGALCOPYRIGHT_SHORT L"Copyright © 1996-2011"
-#define VERSION_LEGALCOPYRIGHT_LONG  L"© Florian Balmer 1996-2011"
+#define VERSION_LEGALCOPYRIGHT_SHORT L"Copyright (c) 1996-2011" // Copyright © 1996-2011
+#define VERSION_LEGALCOPYRIGHT_LONG  L"(c) Florian Balmer 1996-2011" // © Florian Balmer 1996-2011
 #ifdef _M_AMD64
 #define VERSION_FILEDESCRIPTION      L"metapath x64"
 #else
