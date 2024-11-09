@@ -34,7 +34,7 @@ extern WCHAR szIniFile[MAX_PATH];
   WritePrivateProfileString(lpSection,lpName,lpString,szIniFile)
 #define IniDeleteSection(lpSection) \
   WritePrivateProfileSection(lpSection,NULL,szIniFile)
-static BOOL IniSetInt(LPCWSTR lpSection,LPCWSTR lpName,int i) {
+__inline BOOL IniSetInt(LPCWSTR lpSection,LPCWSTR lpName,int i) {
   WCHAR tch[32]; wsprintf(tch,L"%i",i); return WritePrivateProfileString(lpSection,lpName,tch,szIniFile);
 }
 #define LoadIniSection(lpSection,lpBuf,cchBuf) \
@@ -44,7 +44,7 @@ static BOOL IniSetInt(LPCWSTR lpSection,LPCWSTR lpName,int i) {
 int IniSectionGetString(LPCWSTR,LPCWSTR,LPCWSTR,LPWSTR,int);
 int IniSectionGetInt(LPCWSTR,LPCWSTR,int);
 BOOL IniSectionSetString(LPWSTR,LPCWSTR,LPCWSTR);
-static BOOL IniSectionSetInt(LPWSTR lpCachedIniSection,LPCWSTR lpName,int i) {
+__inline BOOL IniSectionSetInt(LPWSTR lpCachedIniSection,LPCWSTR lpName,int i) {
   WCHAR tch[32]; wsprintf(tch,L"%i",i); return IniSectionSetString(lpCachedIniSection,lpName,tch);
 }
 
@@ -75,7 +75,7 @@ void SetWindowTransparentMode(HWND,BOOL);
 BOOL StatusSetText(HWND,UINT,LPCWSTR);
 
 int Toolbar_GetButtons(HWND,int,LPWSTR,int);
-int Toolbar_SetButtons(HWND,int,LPCWSTR,LPCTBBUTTON,int);
+int Toolbar_SetButtons(HWND,int,LPCWSTR,void*,int);
 void Toolbar_SetButtonImage(HWND,int,int);
 
 LRESULT SendWMSize(HWND);

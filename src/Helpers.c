@@ -1694,23 +1694,23 @@ BOOL GetThemedDialogFont(LPWSTR lpFaceName,WORD* wSize)
   return(bSucceed);
 }
 
-static BOOL DialogTemplate_IsDialogEx(const DLGTEMPLATE* pTemplate) {
+__inline BOOL DialogTemplate_IsDialogEx(const DLGTEMPLATE* pTemplate) {
 
   return ((DLGTEMPLATEEX*)pTemplate)->signature == 0xFFFF;
 }
 
-static BOOL DialogTemplate_HasFont(const DLGTEMPLATE* pTemplate) {
+__inline BOOL DialogTemplate_HasFont(const DLGTEMPLATE* pTemplate) {
 
   return (DS_SETFONT &
     (DialogTemplate_IsDialogEx(pTemplate) ? ((DLGTEMPLATEEX*)pTemplate)->style : pTemplate->style));
 }
 
-static int DialogTemplate_FontAttrSize(BOOL bDialogEx) {
+__inline int DialogTemplate_FontAttrSize(BOOL bDialogEx) {
 
   return (int)sizeof(WORD) * (bDialogEx ? 3 : 1);
 }
 
-static BYTE* DialogTemplate_GetFontSizeField(const DLGTEMPLATE* pTemplate) {
+__inline BYTE* DialogTemplate_GetFontSizeField(const DLGTEMPLATE* pTemplate) {
 
   BOOL bDialogEx = DialogTemplate_IsDialogEx(pTemplate);
   WORD* pw;
